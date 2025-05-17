@@ -9,3 +9,8 @@ crud_frontend/node_modules/
 .DS_Store
 Thumbs.db
 .env
+venv/
+__pycache__/
+node_modules/
+dist/       # se houver pasta de build
+.env        # qualquer arquivo de secrets
