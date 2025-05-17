@@ -1,18 +1,12 @@
-# === Python backend ===
-crud_backend/venv/
-**/__pycache__/
-crud_backend/node_modules/
-
-
-# === Node frontend ===
+# --- frontend ---
 crud_frontend/node_modules/
 
-# Sistema
+# --- backend ---
+crud_backend/venv/
+crud_backend/__pycache__/
+
+# --- gerais ---
+node_modules/          # evita qualquer node_modules “perdido”
+.env
 .DS_Store
 Thumbs.db
-.env
-venv/
-__pycache__/
-node_modules/
-dist/      
-.env       
