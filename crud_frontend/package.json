@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.6",
+    "chart.js": "^2.9.4",
     "crud_frontend": "file:",
     "lucide-vue": "^0.511.0",
     "vue": "^2.5.2",
+    "vue-chartjs": "^3.5.1",
     "vue-resource": "^1.5.3",
     "vue-router": "^3.0.1"
   },
