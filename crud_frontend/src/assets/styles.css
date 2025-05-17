@@ -1,0 +1,57 @@
+/* 1) Variáveis de tema */
+:root {
+  --color-bg: #121212;        /* Fundo bem escuro, sem transparência */
+  --color-primary: #E63946;   /* Vermelho cereja */
+  --color-secondary: #A8A8A8; /* Cinza claro */
+  --font-base: 'Noto Sans JP', sans-serif;
+  --font-heading: 'Kiwi Maru', serif;
+}
+
+/* 2) Reset e fundo global */
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
+  font-family: var(--font-base);
+  min-height: 100vh;
+}
+
+/* 3) Navbar sempre opaca */
+.navbar-custom {
+  background-color: var(--color-bg) !important;
+  color: #f4f4f4;
+  height: 60px;
+  font-size: 15px;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+/* 4) Kanji e título */
+.kanji-logo-nav {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.titulo-navbar {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: bold;
+  color: #f4f4f4;
+}
+
+/* 5) Links do menu */
+.menu-links a,
+.menu-links router-link {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: 500;
+}
+.menu-links a:hover,
+.menu-links router-link:hover {
+  color: #fff;
+}

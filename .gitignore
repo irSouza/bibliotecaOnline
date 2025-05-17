@@ -1,0 +1,11 @@
+# === Python backend ===
+crud_backend/venv/
+**/__pycache__/
+
+# === Node frontend ===
+crud_frontend/node_modules/
+
+# Sistema
+.DS_Store
+Thumbs.db
+.env

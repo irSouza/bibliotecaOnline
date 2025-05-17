@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Criando usuário</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#submit").on('click', function () {
+                    $.ajax({url: 'http://localhost:5000/create', type: "POST", dataType: 'json', data: $("#form").serialize(),
+                        success: function (result) {
+                            console.log(result);
+                        },
+                        error: function (xhr, resp, text) {
+                            console.log(xhr, resp, text);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form id="form" action="" method="post">
+            Nome: <input type="text" name="nome" value="" size="50"/><br>
+            E-mail: <input type="text" name="email" value="" size="50"/><br>
+            <input id="submit" type="button" value="Enviar" />
+        </form>
+    </body>
+</html>
