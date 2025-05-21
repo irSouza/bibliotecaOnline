@@ -145,7 +145,7 @@ export default {
     openConfirm () { if (this.formValid) { this.showConfirm = true } },
     atualizarLivro () {
       this.showConfirm = false
-      this.$http.put('http://localhost:5000/livros', this.livro)
+      this.$http.put(`http://localhost:5000/livros/${this.livro._id}`, this.livro)
         .then(res => { this.sucesso = res.body.mensagem; setTimeout(() => this.$router.push({ name: 'list' }), 1500) })
         .catch(() => alert('Erro ao atualizar livro.'))
     }
