@@ -4,6 +4,7 @@ crud_frontend/node_modules/
 # --- backend ---
 crud_backend/venv/
 crud_backend/__pycache__/
+crud_backend/app/__pycache__/
 
 # --- gerais ---
 node_modules/          # evita qualquer node_modules “perdido”
