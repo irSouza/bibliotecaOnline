@@ -1,12 +1,10 @@
 <template>
   <div class="pendentes-container">
-    <!-- Cabeçalho -->
     <header class="pendentes-header">
       <span class="kanji-icon">学</span>
       <h2 class="titulo-header">Alunos Pendentes</h2>
     </header>
 
-<!-- Tabela -->
 <div class="table-card">
   <table v-if="usuarios.length" class="pend-table">
     <thead>
@@ -32,12 +30,10 @@
   <div v-else class="empty-state">Nenhum aluno pendente.</div>
 </div>
 
-<!-- Voltar -->
 <div class="back-container">
   <router-link :to="{ name: 'home' }" class="button-custom">戻 Voltar ao Menu</router-link>
 </div>
 
-<!-- Modal confirmação -->
 <div v-if="showConfirm" class="modal-overlay" @click.self="showConfirm=false">
   <div class="modal-content">
     <p>
@@ -51,7 +47,6 @@
   </div>
 </div>
 
-<!-- Toast -->
 <div v-if="toast" class="toast-overlay"><div class="toast-content">{{ toast }}</div></div>
 
   </div>

@@ -2,19 +2,16 @@
   <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card-custom p-5">
 
-      <!-- Kanji + Título -->
       <div class="text-center mb-4">
         <div class="kanji-logo-nav kanji-logo-large">書</div>
         <h2 class="titulo-header">Biblioteca Online</h2>
         <p class="text-caption">Biblioteca para todos!</p>
       </div>
 
-      <!-- Mensagem de erro -->
       <div v-if="erro" class="alert alert-danger">
         {{ erro }}
       </div>
 
-      <!-- Formulário de login -->
       <form @submit.prevent="login">
         <div class="form-group mb-3">
           <label class="text-light">Email</label>
@@ -41,7 +38,6 @@
         </button>
       </form>
 
-      <!-- Link para cadastro -->
       <div class="text-center mt-4">
         <router-link :to="{ name: 'cadastro' }" class="link-cadastro">
           Criar nova conta

@@ -1,12 +1,10 @@
 <template>
   <div class="filter-container">
-    <!-- Cabeçalho -->
     <div class="title-row">
       <span class="kanji-icon-large">探</span>
       <h2 class="titulo-header">Filtro de Livros</h2>
     </div>
 
-    <!-- Card de filtros -->
     <div class="filter-card">
       <form @submit.prevent="handleSearch" class="filters-grid">
         <div class="filter-field">
@@ -45,7 +43,6 @@
           </select>
         </div>
 
-        <!-- Botões de ação, lado a lado -->
         <div class="grid-actions">
           <button type="submit" class="btn action-button">検 Pesquisar</button>
           <button type="button" class="btn cancel-button" @click="limparFiltros">清 Limpar</button>
@@ -53,7 +50,6 @@
       </form>
     </div>
 
-    <!-- Resultados -->
     <div v-if="hasSearched">
       <div v-if="isLoading" class="loading-state">
         <div class="spinner-border text-primary" role="status">
@@ -93,7 +89,6 @@
       </div>
     </div>
 
-    <!-- Voltar ao menu -->
     <div class="back-link">
       <router-link :to="{ name: 'home' }" class="btn action-button">戻 Voltar ao Menu</router-link>
     </div>

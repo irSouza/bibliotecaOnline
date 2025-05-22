@@ -1,18 +1,15 @@
 <template>
   <div class="list-container">
-    <!-- Cabeçalho centralizado -->
     <header class="list-header">
       <span class="kanji-icon">書</span>
       <h2 class="titulo-header">Acervo de Livros</h2>
     </header>
 
-    <!-- Toolbar -->
     <div class="toolbar">
       <input v-model="searchTerm" @input="currentPage=1" type="text" placeholder="Buscar por título ou autor" class="input-search" />
       <router-link v-if="usuario.tipo==='bibliotecario'" :to="{name:'create'}" class="btn button-custom">＋ Cadastrar Novo</router-link>
     </div>
 
-    <!-- Tabela -->
     <div class="table-card">
       <table class="book-table">
         <thead>
@@ -41,7 +38,6 @@
         </tbody>
       </table>
 
-      <!-- Paginação -->
       <div v-if="pageCount>1" class="pagination">
         <button class="pg-btn" :disabled="currentPage===1" @click="currentPage--">&lt;</button>
         <span>Página {{ currentPage }} de {{ pageCount }}</span>
@@ -49,7 +45,6 @@
       </div>
     </div>
 
-    <!-- Modal Confirmação -->
     <div v-if="showConfirm" class="modal-overlay" @click.self="showConfirm=false">
       <div class="modal-content">
         <p>Deseja excluir o livro '<strong>{{ toDelete.titulo }}</strong>'?</p>
@@ -60,7 +55,6 @@
       </div>
     </div>
 
-    <!-- Voltar -->
     <div class="back-container">
       <router-link :to="{name:'home'}" class="btn button-custom">戻 Voltar ao Menu</router-link>
     </div>
@@ -129,7 +123,6 @@ export default {
 </script>
 
 <style scoped>
-/* (mantive as suas regras originais e apenas ajustei colspan) */
 .list-container{background:var(--color-bg);color:var(--color-secondary);min-height:100vh;padding:2rem 1rem;}
 .list-header{text-align:center;margin-bottom:1rem;}
 .kanji-icon{font-size:2.5rem;color:var(--color-primary);display:block;margin:0 auto;}

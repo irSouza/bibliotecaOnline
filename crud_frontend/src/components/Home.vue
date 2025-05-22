@@ -1,15 +1,12 @@
 <template>
   <div class="home-container">
-    <!-- Cabeçalho com Kanji e Título -->
     <header class="text-center mb-4">
       <div class="kanji-logo-large">書</div>
       <h2 class="titulo-header">Biblioteca Online</h2>
       <p class="text-caption">Painel principal</p>
     </header>
 
-    <!-- Grid de botões de ação -->
     <div class="buttons-grid d-grid gap-3">
-      <!-- Ver Livros -->
       <router-link
         :to="{ name: 'list' }"
         class="btn button-custom d-flex align-items-center"
@@ -18,7 +15,6 @@
         <span class="ms-3">Ver Livros</span>
       </router-link>
 
-      <!-- Buscar Livros (segunda opção) -->
       <router-link
         :to="{ name: 'filtro' }"
         class="btn button-custom d-flex align-items-center"
@@ -27,7 +23,6 @@
         <span class="ms-3">Buscar Livros</span>
       </router-link>
 
-      <!-- Opções para bibliotecário -->
       <router-link
         v-if="usuario.tipo === 'bibliotecario'"
         :to="{ name: 'create' }"
@@ -64,7 +59,6 @@
         <span class="ms-3">Dashboard</span>
       </router-link>
 
-      <!-- Opção para aluno -->
       <router-link
         v-if="usuario.tipo === 'aluno'"
         :to="{ name: 'minhas-reservas' }"
@@ -74,7 +68,6 @@
         <span class="ms-3">Minhas Reservas</span>
       </router-link>
 
-      <!-- Botão Sair -->
       <button
         @click="logout"
         class="btn button-cancel d-flex align-items-center"

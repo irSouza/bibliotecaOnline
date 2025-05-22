@@ -1,12 +1,10 @@
 <template>
   <div class="dashboard-container">
-    <!-- Cabeçalho -->
     <header class="dashboard-header">
       <span class="kanji-icon" aria-hidden="true">書</span>
       <h2 class="titulo-header">Dashboard da Biblioteca</h2>
     </header>
 
-    <!-- Cards de Métricas -->
     <div class="metrics-grid">
       <div class="metric-card total">
         <h5>Total de Livros</h5>
@@ -22,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Gráficos -->
     <div class="charts-grid">
       <div class="chart-card">
         <h5>Disponível × Emprestado</h5>
@@ -34,7 +31,6 @@
       </div>
     </div>
 
-    <!-- Voltar ao Menu -->
     <div class="back-container">
       <router-link :to="{ name: 'home' }" class="button-custom">戻 Voltar ao Menu</router-link>
     </div>
@@ -75,11 +71,9 @@ export default {
         .catch(() => alert('Erro ao carregar dados do dashboard.'))
     },
     renderCharts () {
-      // destrói instâncias antigas para evitar overlay em HMR
       if (this.statusChartInstance) this.statusChartInstance.destroy()
       if (this.genreChartInstance) this.genreChartInstance.destroy()
 
-      // Status Pie
       this.statusChartInstance = new Chart(this.$refs.statusChart.getContext('2d'), {
         type: 'pie',
         data: {
@@ -94,7 +88,6 @@ export default {
         }
       })
 
-      // Genre Bar
       this.genreChartInstance = new Chart(this.$refs.genreChart.getContext('2d'), {
         type: 'horizontalBar',
         data: {
@@ -122,7 +115,6 @@ export default {
 </script>
 
 <style scoped>
-/* Mantém estilos anteriores + pequenos ajustes */
 .dashboard-container {
   background: var(--color-bg);
   color: var(--color-secondary);

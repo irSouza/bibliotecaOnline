@@ -7,7 +7,7 @@ crud_backend/__pycache__/
 crud_backend/app/__pycache__/
 
 # --- gerais ---
-node_modules/          # evita qualquer node_modules “perdido”
+node_modules/
 .env
 .DS_Store
 Thumbs.db

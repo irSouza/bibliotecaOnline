@@ -1,19 +1,16 @@
 <template>
   <nav class="navbar-custom d-flex justify-content-between align-items-center px-4 py-2">
-    <!-- Logo e Título -->
     <div class="d-flex align-items-center gap-2">
       <span class="kanji-logo-nav">書</span>
       <span class="titulo-navbar">Biblioteca Online</span>
     </div>
 
-    <!-- Botão Hamburger para Mobile -->
     <button class="hamburger-btn" @click="toggleMenu" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <!-- Links de Navegação -->
     <div :class="['menu-links', 'd-flex', 'gap-4', { open: menuOpen }]">
       <router-link
         :to="{ name: 'home' }"
@@ -92,7 +89,6 @@ export default {
 </script>
 
 <style scoped>
-/* Navbar base */
 .navbar-custom {
   position: fixed;
   top: 0;
@@ -108,7 +104,6 @@ export default {
   background: linear-gradient(135deg, rgba(18,18,18,1), rgba(30,30,30,1));
 }
 
-/* Logo Kanji e Título */
 .kanji-logo-nav {
   font-family: var(--font-base);
   font-size: 28px;
@@ -121,7 +116,6 @@ export default {
   margin-left: 4px;
 }
 
-/* Menu Links */
 .menu-links a,
 .menu-links router-link {
   position: relative;
@@ -152,7 +146,6 @@ export default {
   width: 100%;
 }
 
-/* Logout Link */
 .link-logout {
   padding: 0.5rem 0.75rem;
   color: var(--color-danger, #e63946);
@@ -163,7 +156,6 @@ export default {
   color: #fff;
 }
 
-/* Hamburger Button */
 .hamburger-btn {
   display: none;
   flex-direction: column;
@@ -186,7 +178,6 @@ export default {
   background: var(--color-primary);
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .hamburger-btn {
     display: flex;

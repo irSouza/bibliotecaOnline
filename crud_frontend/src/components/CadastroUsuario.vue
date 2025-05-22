@@ -1,17 +1,13 @@
 <template>
   <div class="register-container">
-    <!-- Cabeçalho -->
     <header class="register-header">
       <span class="kanji-icon">人</span>
       <h2 class="titulo-header">Cadastrar Usuário</h2>
     </header>
 
-    <!-- Alerta de sucesso -->
     <div v-if="mensagem" class="alert-success">{{ mensagem }}</div>
 
-    <!-- Formulário -->
     <form @submit.prevent="cadastrar" class="register-form" novalidate>
-      <!-- Nome -->
       <div class="form-group">
         <label for="nome">Nome *</label>
         <input
@@ -25,7 +21,6 @@
         <small v-if="touched.nome && !usuario.nome" class="form-error">Campo obrigatório.</small>
       </div>
 
-      <!-- Email -->
       <div class="form-group">
         <label for="email">Email *</label>
         <input
@@ -39,7 +34,6 @@
         <small v-if="touched.email && !validEmail" class="form-error">Email inválido.</small>
       </div>
 
-      <!-- Senha -->
       <div class="form-group pwd-group">
         <label for="senha">Senha *</label>
         <div class="pwd-wrapper">
@@ -64,7 +58,6 @@
         <small v-if="touched.senha && usuario.senha.length < 6" class="form-error">Mínimo 6 caracteres.</small>
       </div>
 
-      <!-- Tipo -->
       <div class="form-group">
         <label for="tipo">Tipo *</label>
         <select
@@ -81,14 +74,12 @@
         <small v-if="touched.tipo && !usuario.tipo" class="form-error">Selecione o tipo.</small>
       </div>
 
-      <!-- Ações -->
       <div class="form-actions">
         <button type="submit" class="button-custom" :disabled="!formValid">Cadastrar</button>
         <router-link :to="{ name: 'login' }" class="btn-secondary">Cancelar</router-link>
       </div>
     </form>
 
-    <!-- Voltar -->
     <div class="back-container">
       <router-link :to="{ name: 'login' }" class="button-custom">← Voltar ao Login</router-link>
     </div>

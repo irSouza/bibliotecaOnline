@@ -8,41 +8,35 @@
     <div class="form-card">
       <div v-if="sucesso" class="alert-success">{{ sucesso }}</div>
       <form @submit.prevent="openConfirm" novalidate>
-        <!-- Título -->
         <div class="form-group">
           <label for="titulo">Título *</label>
           <input id="titulo" v-model.trim="livro.titulo" @blur="touched.titulo=true" class="input-dark" type="text" required />
           <small v-if="touched.titulo && !livro.titulo" class="form-error">Campo obrigatório.</small>
         </div>
 
-        <!-- Autor -->
         <div class="form-group">
           <label for="autor">Autor *</label>
           <input id="autor" v-model.trim="livro.autor" @blur="touched.autor=true" class="input-dark" type="text" required />
           <small v-if="touched.autor && !livro.autor" class="form-error">Campo obrigatório.</small>
         </div>
 
-        <!-- Ano -->
         <div class="form-group">
           <label for="ano">Ano *</label>
           <input id="ano" v-model.number="livro.ano" @keydown="allowNumberOnly" @blur="touched.ano=true" maxlength="4" class="input-dark" :placeholder="`Insira o ano (1000-${currentYear})`" required />
           <small v-if="touched.ano && (livro.ano<1000 || livro.ano>currentYear)" class="form-error">Ano entre 1000 e {{ currentYear }}.</small>
         </div>
 
-        <!-- Quantidade -->
         <div class="form-group">
           <label for="qtd">Quantidade *</label>
           <input id="qtd" v-model.number="livro.quantidade" @keydown="allowNumberOnly" @blur="touched.quantidade=true" type="number" min="0" class="input-dark" />
           <small v-if="touched.quantidade && (livro.quantidade===null || livro.quantidade<0)" class="form-error">Informe um número ≥ 0.</small>
         </div>
 
-        <!-- Gênero -->
         <div class="form-group">
           <label for="genero">Gênero</label>
           <input id="genero" v-model.trim="livro.genero" class="input-dark" type="text" />
         </div>
 
-        <!-- Status -->
         <div class="form-group">
           <label for="status">Status</label>
           <select id="status" v-model="livro.status" class="input-dark">
@@ -52,14 +46,12 @@
           </select>
         </div>
 
-        <!-- Páginas -->
         <div class="form-group">
           <label for="paginas">Páginas *</label>
           <input id="paginas" v-model.number="livro.numero_paginas" @keydown="allowNumberOnly" @blur="touched.paginas=true" type="number" min="1" class="input-dark" />
           <small v-if="touched.paginas && (livro.numero_paginas===null || livro.numero_paginas<1)" class="form-error">Deve ser maior que zero.</small>
         </div>
 
-        <!-- Edição -->
         <div class="form-group">
           <label for="edicao">Edição</label>
           <select id="edicao" v-model.number="livro.edicao" class="input-dark">
@@ -68,27 +60,23 @@
           </select>
         </div>
 
-        <!-- ISBN -->
         <div class="form-group">
           <label for="isbn">ISBN</label>
           <input id="isbn" v-model="livro.isbn" @input="formatarIsbn" @keydown="allowNumberOnly" @blur="touched.isbn=true" maxlength="13" class="input-dark" placeholder="Somente 10 ou 13 dígitos" />
           <small v-if="touched.isbn && livro.isbn && (livro.isbn.length!==10 && livro.isbn.length!==13)" class="form-error">ISBN deve ter 10 ou 13 dígitos.</small>
         </div>
 
-        <!-- Descrição -->
         <div class="form-group">
           <label for="descricao">Descrição</label>
           <textarea id="descricao" v-model.trim="livro.descricao" rows="4" class="input-dark"></textarea>
         </div>
 
-        <!-- Capa URL -->
         <div class="form-group">
           <label for="capa">URL da Capa</label>
           <input id="capa" v-model="livro.imagem_url" @blur="coverPreview = livro.imagem_url" type="url" placeholder="https://..." class="input-dark" />
           <img v-if="coverPreview" :src="coverPreview" alt="Capa" class="cover-preview" />
         </div>
 
-        <!-- Ações -->
         <div class="form-actions">
           <button type="submit" class="button-custom" :disabled="!formValid">Salvar Alterações</button>
           <router-link :to="{ name: 'home' }" class="btn-secondary">Cancelar</router-link>
@@ -100,7 +88,6 @@
       <router-link :to="{ name: 'home' }" class="button-custom">戻 Voltar ao Menu</router-link>
     </div>
 
-    <!-- Modal de confirmação -->
     <div v-if="showConfirm" class="modal-overlay" @click.self="showConfirm=false">
       <div class="modal-content">
         <p>Confirmar salvar alterações?</p>
@@ -173,7 +160,6 @@ label{margin-bottom:.5rem;font-weight:500}
 .btn-secondary{background:#6c757d;color:#fff;padding:.5rem 1rem;border:none;border-radius:6px;cursor:pointer;transition:background .2s}
 .btn-secondary:hover{background:#5a6266}
 .back-container{text-align:center;margin:2rem 0 0}
-/* modal */
 .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000}
 .modal-content{background:#1f1f1f;padding:1.5rem;border-radius:8px;color:#f4f4f4;text-align:center;width:90%;max-width:400px}
 .modal-actions{display:flex;justify-content:center;gap:1rem;margin-top:1rem}

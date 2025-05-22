@@ -1,16 +1,13 @@
 <template>
   <div class="create-container">
-    <!-- Cabeçalho -->
     <header class="create-header">
       <span class="kanji-icon">書</span>
       <h2 class="titulo-header">Cadastrar Livro</h2>
     </header>
 
-    <!-- Formulário -->
     <div class="form-card">
       <div v-if="sucesso" class="alert-success">{{ sucesso }}</div>
       <form @submit.prevent="addLivro" class="book-form" novalidate>
-        <!-- Título -->
         <div class="form-group">
           <label for="titulo">Título *</label>
           <input id="titulo" v-model.trim="livro.titulo" @blur="touched.titulo = true" type="text" class="input-dark" required />
@@ -24,27 +21,23 @@
           <small v-if="touched.autor && !livro.autor" class="form-error">Campo obrigatório.</small>
         </div>
 
-        <!-- Ano -->
         <div class="form-group">
           <label for="ano">Ano *</label>
           <input id="ano" v-model.number="livro.ano" @blur="touched.ano = true" @keypress="allowNumberOnly" type="text" inputmode="numeric" maxlength="4" class="input-dark" :placeholder="`Insira o ano (1000-${currentYear})`" required />
           <small v-if="touched.ano && (livro.ano < 1000 || livro.ano > currentYear)" class="form-error">Ano entre 1000 e {{ currentYear }}.</small>
         </div>
 
-        <!-- Quantidade -->
         <div class="form-group">
           <label for="qtd">Quantidade *</label>
           <input id="qtd" v-model.number="livro.quantidade" @blur="touched.quantidade = true" @keypress="allowNumberOnly" type="number" min="0" class="input-dark" placeholder="Insira a quantidade de livros" required />
           <small v-if="touched.quantidade && (livro.quantidade === null || livro.quantidade < 0)" class="form-error">Informe um número ≥ 0.</small>
         </div>
 
-        <!-- Gênero -->
         <div class="form-group">
           <label for="genero">Gênero</label>
           <input id="genero" v-model.trim="livro.genero" type="text" class="input-dark" />
         </div>
 
-        <!-- Status -->
         <div class="form-group">
           <label for="status">Status</label>
           <select id="status" v-model="livro.status" class="input-dark">
@@ -53,14 +46,12 @@
           </select>
         </div>
 
-        <!-- Páginas -->
         <div class="form-group">
           <label for="paginas">Páginas</label>
           <input id="paginas" v-model.number="livro.numero_paginas" @blur="touched.paginas = true" @keypress="allowNumberOnly" type="number" min="1" class="input-dark" placeholder="Quantidade de páginas" />
           <small v-if="touched.paginas && livro.numero_paginas !== null && livro.numero_paginas < 1" class="form-error">Deve ser maior que zero.</small>
         </div>
 
-        <!-- Edição -->
         <div class="form-group">
           <label for="edicao">Edição</label>
           <select id="edicao" v-model.number="livro.edicao" class="input-dark">
@@ -69,20 +60,17 @@
           </select>
         </div>
 
-        <!-- ISBN -->
         <div class="form-group">
           <label for="isbn">ISBN</label>
           <input id="isbn" v-model="livro.isbn" @blur="touched.isbn = true; validateISBN()" @keypress="allowNumberOnly" type="text" inputmode="numeric" maxlength="13" class="input-dark" placeholder="Somente 10 ou 13 dígitos" />
           <small v-if="touched.isbn && isbnError" class="form-error">{{ isbnError }}</small>
         </div>
 
-        <!-- Descrição -->
         <div class="form-group">
           <label for="descricao">Descrição</label>
           <textarea id="descricao" v-model.trim="livro.descricao" rows="4" class="input-dark"></textarea>
         </div>
 
-        <!-- Capa (somente via URL) -->
         <div class="form-group">
           <label for="imagem">URL da Capa</label>
           <input
@@ -96,7 +84,6 @@
           <img v-if="coverPreview" :src="coverPreview" alt="Prévia da capa" class="cover-preview" />
         </div>
 
-        <!-- Ações -->
         <div class="form-actions">
           <button type="submit" class="button-custom" :disabled="!formValid">Cadastrar</button>
           <router-link :to="{ name: 'home' }" class="btn-secondary">Cancelar</router-link>
@@ -171,13 +158,11 @@ export default {
       reader.readAsDataURL(file)
     },
     previewCover () {
-      // se URL informada, usa‑a; caso contrário mantém preview existente
       if (this.livro.imagem_url) {
         this.coverPreview = this.livro.imagem_url
       }
     },
     addLivro () {
-      // marca todos campos como tocados
       Object.keys(this.touched).forEach(k => { this.touched[k] = true })
       this.validateISBN()
       if (!this.formValid) return
@@ -193,7 +178,6 @@ export default {
 </script>
 
 <style scoped>
-/* Layout */
 .create-container {
   background: var(--color-bg);
   color: var(--color-secondary);
@@ -206,7 +190,6 @@ export default {
 .kanji-icon { font-size: 2.5rem; color: var(--color-primary); display: block; margin: 0 auto; }
 .titulo-header { font-size: 1.75rem; margin-top: 0.5rem; }
 
-/* Card */
 .form-card {
   background: #1f1f1f;
   padding: 2rem;
@@ -214,7 +197,6 @@ export default {
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-/* Alert */
 .alert-success {
   background: #2f522f;
   color: #d4edda;
@@ -224,7 +206,6 @@ export default {
   text-align: center;
 }
 
-/* Form */
 .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; }
 label { margin-bottom: 0.5rem; font-weight: 500; }
 .input-dark,
@@ -240,14 +221,12 @@ textarea.input-dark {
 .input-dark:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 4px rgba(201,79,79,0.5); }
 .form-error { color: #e74c3c; font-size: 0.85rem; margin-top: 0.25rem; }
 
-/* Cover */
 .cover-inputs { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .file-label { background: var(--color-secondary); color: #fff; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
 .file-input { display: none; }
 .file-name { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-secondary); word-break: break-word; }
 .cover-preview { display: block; margin-top: 1rem; max-width: 100%; border-radius: 4px; }
 
-/* Buttons */
 .form-actions { display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem; }
 .button-custom { background: var(--color-primary); color: #fff; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s ease; }
 .button-custom:disabled { opacity: 0.6; cursor: not-allowed; }

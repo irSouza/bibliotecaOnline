@@ -6,7 +6,7 @@ import qrcode, base64, bcrypt
 from io import BytesIO
 from datetime import datetime, timedelta, timezone
 
-# =============== LIVROS ===============
+
 @app.route('/livros', methods=['GET'])
 def listar_livros():
     livros = list(db.livros.find())
@@ -131,8 +131,6 @@ def atualizar_status_usuario():
         return jsonify(mensagem='Status atualizado')
     return jsonify(mensagem='Usuário não encontrado'), 404
 
-
-# =============== RESERVAS ===============
 @app.route('/reservas', methods=['POST'])
 @cross_origin(origins='http://localhost:8080', supports_credentials=True)
 def solicitar_reserva():
