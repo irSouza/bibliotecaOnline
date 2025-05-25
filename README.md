@@ -23,19 +23,19 @@ Sistema completo de gerenciamento de uma biblioteca, com funcionalidades para ca
 
 ### Backend (Flask)
 
-cd crud_backend
-python -m venv venv
-venv\Scripts\activate   # ou source venv/bin/activate no Linux/Mac
-pip install -r requirements.txt
+    cd crud_backend
+    python -m venv venv
+    venv\Scripts\activate   # ou source venv/bin/activate no Linux/Mac
+    pip install -r requirements.txt
 # Configure o arquivo .env com sua URI do MongoDB Atlas
 flask run
 
 
 ### Frontend (Vue.js)
 
-cd crud_frontend
-npm install
-npm run dev
+    cd crud_frontend
+    npm install
+    npm run dev
 
 ### Acesso de Teste
 
