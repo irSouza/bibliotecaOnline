@@ -252,3 +252,21 @@ def devolver_reserva():
         {'$inc': {'quantidade': 1}}
     )
     return jsonify(mensagem='Livro devolvido')
+
+@app.route('/reservas/recusar', methods=['PUT'])
+@cross_origin(origins='http://localhost:8080', supports_credentials=True)
+def recusar_reserva():
+    data = request.json or {}
+    if 'reserva_id' not in data:
+        return jsonify(mensagem='Dados incompletos'), 400
+
+    res = db.reservas.update_one(
+        {'_id': ObjectId(data['reserva_id'])},
+        {'$set': {'status': 'rejeitado'}}
+    )
+    
+    if res.modified_count:
+        return jsonify(mensagem='Reserva recusada')
+    return jsonify(mensagem='Reserva não encontrada'), 404
+
+
